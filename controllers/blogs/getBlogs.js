@@ -40,8 +40,7 @@ const getBlogs = async (req, res) => {
       skip: (pageNo - 1) * blogPerPage,
       take: blogPerPage
     });
-    const tags = await prisma.blogTag.findMany();
-    return res.status(StatusCodes.OK).json({ blogs, tags });
+    return res.status(StatusCodes.OK).json(blogs);
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError)
       console.error(error);
